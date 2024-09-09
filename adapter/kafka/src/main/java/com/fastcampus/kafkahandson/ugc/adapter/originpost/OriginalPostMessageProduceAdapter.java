@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import static com.fastcampus.kafkahandson.ugc.adapter.common.Topic.ORIGINAL_TOPIC;
+import static com.fastcampus.kafkahandson.ugc.adapter.common.Topic.ORIGINAL_POST;
 
 @RequiredArgsConstructor
 @Component
@@ -55,7 +55,7 @@ public class OriginalPostMessageProduceAdapter implements OriginalPostMessagePro
 
     private void sendMessage(OriginalPostMessage message) {
         try {
-            kafkaTemplate.send(ORIGINAL_TOPIC, message.getId().toString(), objectMapper.writeValueAsString(message));
+            kafkaTemplate.send(ORIGINAL_POST, message.getId().toString(), objectMapper.writeValueAsString(message));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
