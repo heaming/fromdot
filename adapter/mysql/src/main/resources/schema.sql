@@ -1,4 +1,3 @@
--- [Chapter 2] post 테이블 생성
 CREATE TABLE post
 (
     id          INT AUTO_INCREMENT PRIMARY KEY COMMENT '콘텐츠의 id',
