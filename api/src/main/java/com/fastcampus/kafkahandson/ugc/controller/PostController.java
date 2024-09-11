@@ -51,6 +51,10 @@ public class PostController {
                 )
         );
 
+        if (post == null) {
+            return ResponseEntity.notFound().build();
+        }
+
         return ResponseEntity.ok().body(toDto(post));
     }
 
@@ -68,6 +72,10 @@ public class PostController {
     @DeleteMapping("/{postId}")
     ResponseEntity<PostDto> deletePost(@PathVariable Long postId) {
         Post post = postDeleteUsecase.delete(new PostDeleteUsecase.Request(postId));
+
+        if (post == null) {
+            return ResponseEntity.notFound().build();
+        }
 
         return ResponseEntity.ok().body(toDto(post));
     }
