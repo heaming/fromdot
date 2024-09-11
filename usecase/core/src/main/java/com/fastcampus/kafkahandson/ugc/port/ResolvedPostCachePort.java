@@ -8,4 +8,6 @@ public interface ResolvedPostCachePort {
 
     ResolvedPost get(Long postId);
 
+    void delete(Long postId);
+
 }

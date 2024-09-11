@@ -15,7 +15,7 @@ import java.time.Duration;
 public class ResolvedPostCacheAdapter implements ResolvedPostCachePort {
 
     private static final String KEY_PREFIX = "resolved_post:v1:";
-    private static final Long EXPIRE_SECONDS = 60L * 60 * 2; // 2hours
+    private static final Long EXPIRE_SECONDS = 60 * 60 * 24 * 7L; // 7days
 
     private final CustomObjectMapper objectMapper = new CustomObjectMapper();
     private final RedisTemplate<String, String> redisTemplate;
@@ -48,6 +48,11 @@ public class ResolvedPostCacheAdapter implements ResolvedPostCachePort {
         } catch (JsonProcessingException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    @Override
+    public void delete(Long postId) {
+        redisTemplate.delete(this.generateCacheKey(postId));
     }
 
     private String generateCacheKey(Long postId) {

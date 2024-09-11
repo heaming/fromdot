@@ -27,21 +27,9 @@ public class PostResolvingHelpService implements PostResolvingHelpUsecase {
         }
 
         Post post = postPort.findById(postId);
-
         if(post != null) {
-            String userName = metadataPort.getUserNameByUserId(post.getUserId());
-            String categoryName = metadataPort.getCategoryNameByCategoryId(post.getCategoryId());
-
-            if(userName != null && categoryName != null) {
-                resolvedPost = ResolvedPost.generate(
-                        post,
-                        userName,
-                        categoryName
-                );
-                resolvedPostCachePort.set(resolvedPost);
-            }
+            resolvedPost = this.resolvedPost(post);
         }
-
         return resolvedPost;
     }
 
@@ -49,4 +37,38 @@ public class PostResolvingHelpService implements PostResolvingHelpUsecase {
     public List<ResolvedPost> resolvedPostsByIds(List<Long> postIds) { // TODO : 임시
         return postIds.stream().map(this::resolvedPostById).toList();
     }
+
+    @Override
+    public void resolvePostAndSave(Post post) {
+        ResolvedPost resolvedPost = this.resolvedPost(post);
+
+        if(resolvedPost != null) {
+            resolvedPostCachePort.set(resolvedPost);
+        }
+    }
+
+    @Override
+    public void deleteResolvedPost(Long postId) {
+        resolvedPostCachePort.delete(postId);
+    }
+
+    private ResolvedPost resolvedPost(Post post) {
+        if (post == null) return null;
+
+        ResolvedPost resolvedPost = null;
+        String userName = metadataPort.getUserNameByUserId(post.getUserId());
+        String categoryName = metadataPort.getCategoryNameByCategoryId(post.getCategoryId());
+
+        if(userName != null && categoryName != null) {
+            resolvedPost = ResolvedPost.generate(
+                    post,
+                    userName,
+                    categoryName
+            );
+            resolvedPostCachePort.set(resolvedPost);
+        }
+
+        return resolvedPost;
+    }
+
 }
