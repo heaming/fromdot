@@ -2,18 +2,14 @@ package com.fastcampus.kafkahandson.ugc.adapter.inspectedpost;
 
 import com.fastcampus.kafkahandson.ugc.CustomObjectMapper;
 import com.fastcampus.kafkahandson.ugc.adapter.common.OperationType;
-import com.fastcampus.kafkahandson.ugc.adapter.originpost.OriginalPostMessage;
-import com.fastcampus.kafkahandson.ugc.inspectedpost.InspectedPost;
+import com.fastcampus.kafkahandson.ugc.inspectedpost.model.InspectedPost;
 import com.fastcampus.kafkahandson.ugc.port.InspectedPostMessageProducePort;
-import com.fastcampus.kafkahandson.ugc.port.OriginalPostMessageProducePort;
-import com.fastcampus.kafkahandson.ugc.post.model.Post;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import static com.fastcampus.kafkahandson.ugc.adapter.common.Topic.INSPECTED_POST;
-import static com.fastcampus.kafkahandson.ugc.adapter.common.Topic.ORIGINAL_POST;
 
 @RequiredArgsConstructor
 @Component

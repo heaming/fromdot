@@ -1,4 +1,4 @@
-package com.fastcampus.kafkahandson.ugc.inspectedpost;
+package com.fastcampus.kafkahandson.ugc.inspectedpost.model;
 
 import com.fastcampus.kafkahandson.ugc.post.model.Post;
 import lombok.Getter;

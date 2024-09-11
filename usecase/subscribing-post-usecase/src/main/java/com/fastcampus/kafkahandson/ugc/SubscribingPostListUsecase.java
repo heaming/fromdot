@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.util.List;
 
-public interface SubscribingPostListUsercase {
+public interface SubscribingPostListUsecase {
 
     List<ResolvedPost> listSubscribingInboxPosts(Request request);
 

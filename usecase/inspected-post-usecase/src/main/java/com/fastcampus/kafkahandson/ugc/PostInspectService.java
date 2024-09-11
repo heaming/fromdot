@@ -1,7 +1,7 @@
 package com.fastcampus.kafkahandson.ugc;
 
 import com.fastcampus.kafkahandson.ugc.inspectedpost.AutoInspectionResult;
-import com.fastcampus.kafkahandson.ugc.inspectedpost.InspectedPost;
+import com.fastcampus.kafkahandson.ugc.inspectedpost.model.InspectedPost;
 import com.fastcampus.kafkahandson.ugc.port.MetadataPort;
 import com.fastcampus.kafkahandson.ugc.port.PostAutoInspectPort;
 import com.fastcampus.kafkahandson.ugc.post.model.Post;

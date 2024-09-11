@@ -9,7 +9,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class SubscribingPostListService implements SubscribingPostListUsercase {
+public class SubscribingPostListService implements SubscribingPostListUsecase {
 
     private static final int PAGE_SIZE = 5;
 
@@ -18,7 +18,7 @@ public class SubscribingPostListService implements SubscribingPostListUsercase {
     private final PostResolvingHelpUsecase postResolvingHelpUsecase;
 
     @Override
-    public List<ResolvedPost> listSubscribingInboxPosts(Request request) {
+    public List<ResolvedPost> listSubscribingInboxPosts(SubscribingPostListUsecase.Request request) {
 
         List<Long> subscribingPostIds = subscribingPostPort.listPostIdsByFollowerUserIdWithPagination(
                 request.getFollowerUserId(),

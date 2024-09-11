@@ -1,4 +1,4 @@
-package com.fastcampus.kafkahandson.ugc.adapter.originpost;
+package com.fastcampus.kafkahandson.ugc.adapter.originalpost;
 
 import com.fastcampus.kafkahandson.ugc.CustomObjectMapper;
 import com.fastcampus.kafkahandson.ugc.adapter.common.OperationType;
@@ -20,19 +20,19 @@ public class OriginalPostMessageProduceAdapter implements OriginalPostMessagePro
 
     @Override
     public void sendCreateMessage(Post post) {
-        OriginalPostMessage message = convertToMessage(post.getId(), post, OperationType.CREATE);
+        OriginalPostMessage message = this.convertToMessage(post.getId(), post, OperationType.CREATE);
         this.sendMessage(message);
     }
 
     @Override
     public void sendUpdateMessage(Post post) {
-        OriginalPostMessage message = convertToMessage(post.getId(), post, OperationType.UPDATE);
+        OriginalPostMessage message = this.convertToMessage(post.getId(), post, OperationType.UPDATE);
         this.sendMessage(message);
     }
 
     @Override
-    public void sendDeleteMessage(Long id) {
-        OriginalPostMessage message = convertToMessage(id, null, OperationType.DELETE);
+    public void sendDeleteMessage(Long postId) {
+        OriginalPostMessage message = this.convertToMessage(postId, null, OperationType.DELETE);
         this.sendMessage(message);
     }
 
