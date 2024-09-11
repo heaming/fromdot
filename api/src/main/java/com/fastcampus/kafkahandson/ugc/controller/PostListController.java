@@ -1,6 +1,8 @@
 package com.fastcampus.kafkahandson.ugc.controller;
 
-import com.fastcampus.kafkahandson.ugc.model.PostListDto;
+import com.fastcampus.kafkahandson.ugc.SubscribingPostListUsercase;
+import com.fastcampus.kafkahandson.ugc.model.PostInListDto;
+import com.fastcampus.kafkahandson.ugc.post.model.ResolvedPost;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,17 +14,34 @@ import java.util.List;
 @RequestMapping("/list")
 public class PostListController {
 
-    @GetMapping("/inbox/{userId}")
-    ResponseEntity<List<PostListDto>> listSubscribingPosts(@PathVariable Long userId) {
+    private final SubscribingPostListUsercase subscribingPostListUsercase;
 
-        return ResponseEntity.internalServerError().build();
+    @GetMapping("/inbox/{userId}")
+    ResponseEntity<List<PostInListDto>> listSubscribingPosts(@PathVariable Long userId,
+                                                             @RequestParam(name = "page", defaultValue = "0", required = false) int page) {
+
+        List<ResolvedPost> subscribingInboxPosts = subscribingPostListUsercase.listSubscribingInboxPosts(
+                new SubscribingPostListUsercase.Request(page, userId)
+        );
+
+        return ResponseEntity.ok().body(subscribingInboxPosts.stream().map(this::toDto).toList());
     }
 
     @GetMapping("/search")
-    ResponseEntity<List<PostListDto>> searchPosts(
+    ResponseEntity<List<PostInListDto>> searchPosts(
             @RequestParam("query") String query
             ) {
 
         return ResponseEntity.internalServerError().build();
     }
+
+    private PostInListDto toDto(ResolvedPost resolvedPost) {
+        return new PostInListDto(
+                resolvedPost.getId(),
+                resolvedPost.getTitle(),
+                resolvedPost.getUserName(),
+                resolvedPost.getCreatedAt()
+        );
+    }
+
 }

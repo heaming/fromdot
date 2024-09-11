@@ -11,6 +11,10 @@ spring:
         show_sql: true
   kafka:
     bootstrap-servers: localhost:9092,localhost:9093,localhost:9094
+  data:
+    mongodb:
+      uri: mongodb://user:user@localhost:27017/platform?authSource=admin&authenticationDatabase=admin
+
 
 external-server:
   metadata:
