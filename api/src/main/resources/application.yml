@@ -14,7 +14,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://user:user@localhost:27017/platform?authSource=admin&authenticationDatabase=admin
-
+    redis:
+      host: localhost
+      port: 6379
 
 external-server:
   metadata:
