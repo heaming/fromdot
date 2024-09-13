@@ -39,7 +39,7 @@ PUT post-1
     }
   }
 }
-```
+```get post-1/_search
 
 이후, 아래 명령어를 통해 현재 그 index가 생성되었는지 확인 가능하다.
 
@@ -70,7 +70,7 @@ GET post-1/_search
 ### Document 예시
 ```json
 {
-  "_class" : "com.fastcampus.kafkahandson.ugc.postsearch.PostDocument",
+  "_class" : "com.fromdot.kafkahandson.ugc.postsearch.PostDocument",
   "id" : 1,
   "title" : "Reps and Muscle Size",
   "content" : "To increase muscle size, it is considered most ideal to exercise with the maximum weight that allows 8 to 12 repetitions per set.",

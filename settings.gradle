@@ -1,4 +1,4 @@
-rootProject.name = 'fastcampus-kafka-event-driven-architecture'
+rootProject.name = 'fromdot'
 
 include 'api'
 include 'worker'
