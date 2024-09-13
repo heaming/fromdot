@@ -24,8 +24,8 @@ public class Coupon {
     }
 
     public static Coupon generate(
-            Long userId,
-            Long couponEventId
+            Long couponEventId,
+            Long userId
     ) {
         return new Coupon(null, userId, couponEventId, LocalDateTime.now(), null);
     }

@@ -5,6 +5,8 @@ import com.fromdot.kafkahandson.ugc.port.CouponEventPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import static com.fromdot.kafkahandson.ugc.coupon.CouponEntityConverter.toCouponEventModel;
+
 @RequiredArgsConstructor
 @Component
 public class CouponEventAdapter implements CouponEventPort {
@@ -16,16 +18,7 @@ public class CouponEventAdapter implements CouponEventPort {
 
         CouponEventEntity couponEventEntity = couponEventJpaRepository.findById(id).orElse(null);
         if(couponEventEntity == null) return null;
-        return this.toModel(couponEventEntity);
-    }
-
-    private CouponEvent toModel(CouponEventEntity couponEventEntity) {
-        return new CouponEvent(
-                couponEventEntity.getId(),
-                couponEventEntity.getDisplayName(),
-                couponEventEntity.getExpiresAt(),
-                couponEventEntity.getIssueLimit()
-        );
+        return toCouponEventModel(couponEventEntity);
     }
 
 }
