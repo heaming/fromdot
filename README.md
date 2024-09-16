@@ -70,7 +70,14 @@ fromdot
     └─coupon-issuing-worker
 ```
 ### 2. 콘텐츠 플랫폼
+![123](https://github.com/user-attachments/assets/0083c653-9777-4fa9-a1a4-0f1de46443d6)
+
+
 
 ### 3. 선착순 쿠폰 이벤트 모듈
+![image](https://github.com/user-attachments/assets/c1d9bfcd-a240-408c-bb18-5f14439687d6)
+
 
 ### 4. 로그 수집 파이프 라인
+![image](https://github.com/user-attachments/assets/e1c599d1-79c3-4cc5-afde-05d7de6a533d)
+
