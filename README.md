@@ -47,7 +47,7 @@ fromdot
 │  └─redis
 ├─common
 ├─domain
-│	 ├─coupon
+│  ├─coupon
 │  │  └─model
 │  ├─inspectedpost
 │  │  └─model
